@@ -10,7 +10,7 @@ DISTRO=$2
 VERSAO=$3
 PROXY_IP=$4
 host=$(hostname)
-NET=$(ping -c 3 8.8.8.8 | grep ttl | wc -l)
+NET="0"
 #########################
 
 function Config(){
