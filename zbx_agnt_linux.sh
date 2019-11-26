@@ -25,7 +25,7 @@ function Config(){
 	echo "Timeout=30" >> /etc/zabbix/zabbix_agentd.conf
 	echo "AllowRoot=1" >> /etc/zabbix/zabbix_agentd.conf
 	echo "Include=/etc/zabbix/zabbix_agentd.d/*.conf" >> /etc/zabbix/zabbix_agentd.conf
-	ehco "UserParameters=zbx_upd[*],/etc/zabbix/scripts/zbx_agnt_lnx.sh update $DISTRO $VERSÃO" >> /etc/zabbix/zabbix_agentd.conf
+	echo "UserParameter=zbx_upd[*],/etc/zabbix/scripts/zbx_agnt_lnx.sh update $DISTRO $VERSAO" >> /etc/zabbix/zabbix_agentd.conf
 
 	echo "Iniciando serviço zabbix_agent"
 	systemctl restart zabbix-agent
