@@ -36,24 +36,24 @@ function DebianOnline(){
 
 	if test	$VERSAO = "9" 2>/dev/null
 		then
-			wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-2+stretch_all.deb
-			dpkg -i zabbix-release_4.0-2+stretch_all.deb
+			wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-3+stretch_all.deb
+			dpkg -i zabbix-release_4.0-3+stretch_all.deb
 			apt update
 			apt install zabbix-agent
 	elif test $VERSAO = "8" 2>/dev/null
 		then
-			wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-2+jessie_all.deb
-			dpkg -i zabbix-release_4.0-2+jessie_all.deb
+			wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-3+jessie_all.deb
+			dpkg -i zabbix-release_4.0-3+jessie_all.deb
 			apt update
 			apt install zabbix-agent
-	elif test $VERSAO = "7" 2>/dev/null
+	elif test $VERSAO = "10" 2>/dev/null
 		then
-			wget https://repo.zabbix.com/zabbix/3.4/debian/pool/main/z/zabbix-release/zabbix-release_3.4-1+wheezy_all.deb
-			dpkg -i zabbix-release_3.4-1+wheezy_all.deb
+			wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-3+buster_all.deb
+			dpkg -i zabbix-release_4.0-3+buster_all.deb
 			apt update
 			apt install zabbix-agent
 		else
-			echo "VERSAO NAO SUPORTADA. [9/8/7]?"
+			echo "VERSAO NAO SUPORTADA. [10/9/8]?"
 		fi
 
 	Config
@@ -63,24 +63,24 @@ function DebianOffline(){
 
 	if test	$VERSAO = "9" 2>/dev/null
 		then
-			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-2+stretch_all.deb
-			dpkg -i zabbix-release_4.0-2+stretch_all.deb
+			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-3+stretch_all.deb
+			dpkg -i zabbix-release_4.0-3+stretch_all.deb
 			apt update
 			apt install zabbix-agent
 	elif test $VERSAO = "8" 2>/dev/null
 		then
-			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-2+jessie_all.deb
-			dpkg -i zabbix-release_4.0-2+jessie_all.deb
+			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-3+jessie_all.deb
+			dpkg -i zabbix-release_4.0-3+jessie_all.deb
 			apt update
 			apt install zabbix-agent
-	elif test $VERSAO = "7" 2>/dev/null
+	elif test $VERSAO = "10" 2>/dev/null
 		then
-			wget http://$PROXY_IP/repozbx/zabbix-release_3.4-1+wheezy_all.deb
-			dpkg -i zabbix-release_3.4-1+wheezy_all.deb
+			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-3+buster_all.deb
+			dpkg -i zabbix-release_4.0-3+buster_all.deb
 			apt update
 			apt install zabbix-agent
 		else
-			echo "VERSAO NAO SUPORTADA. [9/8/7]?"
+			echo "VERSAO NAO SUPORTADA. [10/9/8]?"
 		fi
 
 	Config
@@ -90,14 +90,18 @@ function RHELOnline(){
 
 	if test $VERSAO = "7" 2>/dev/null
 		then
-			rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
+			rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm
 			yum install zabbix-agent
 	elif test $VERSAO= "6" 2>/dev/null
 		then
-			rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/6/x86_64/zabbix-release-4.0-1.el6.noarch.rpm 
+			rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/6/x86_64/zabbix-release-4.0-2.el6.noarch.rpm 
+			yum install zabbix-agent
+	elif test $VERSAO= "8" 2>/dev/null
+		then
+			rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/8/x86_64/zabbix-release-4.0-2.el8.noarch.rpm
 			yum install zabbix-agent
 		else
-			echo "VERSAO NAO SUPORTADA. [7/6]?"
+			echo "VERSAO NAO SUPORTADA. [8/7/6]?"
 	fi
 
 	Config
@@ -107,14 +111,18 @@ function RHELOffline(){
 
 	if test $VERSAO = "7" 2>/dev/null
 		then
-			rpm -i http://$PROXY_IP/repozbx/zabbix-release-4.0-1.el7.noarch.rpm
+			rpm -i http://$PROXY_IP/repozbx/zabbix-release-4.0-2.el7.noarch.rpm
 			yum install zabbix-agent
 	elif test $VERSAO= "6" 2>/dev/null
 		then
-			rpm -i http://$PROXY_IP/repozbx/zabbix-release-4.0-1.el6.noarch.rpm 
+			rpm -i http://$PROXY_IP/repozbx/zabbix-release-4.0-2.el6.noarch.rpm 
+			yum install zabbix-agent
+	elif test $VERSAO= "8" 2>/dev/null
+		then
+			rpm -i https://$PROXY_IP/repozbx/zabbix-release-4.0-2.el8.noarch.rpm
 			yum install zabbix-agent
 		else
-			echo "VERSAO NAO SUPORTADA. [7/6]?"
+			echo "VERSAO NAO SUPORTADA. [8/7/6]?"
 	fi
 
 	Config
@@ -124,24 +132,30 @@ function UbuntuOnline(){
 
 	if test	$VERSAO = "18" 2>/dev/null
 		then
-			wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+bionic_all.deb
-			dpkg -i zabbix-release_4.0-2+bionic_all.deb
+			wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+bionic_all.deb
+			dpkg -i zabbix-release_4.0-3+bionic_all.deb
 			apt update
 			apt install zabbix-agent
 	elif test $VERSAO = "16" 2>/dev/null
 		then
-			wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+xenial_all.deb
-			dpkg -i zabbix-release_4.0-2+xenial_all.deb
+			wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+xenial_all.deb
+			dpkg -i zabbix-release_4.0-3+xenial_all.deb
 			apt update
 			apt install zabbix-agent
 	elif test $VERSAO = "14" 2>/dev/null
 		then
-			wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+trusty_all.deb
-			dpkg -i zabbix-release_4.0-2+trusty_all.deb
+			wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+trusty_all.deb
+			dpkg -i zabbix-release_4.0-3+trusty_all.deb
+			apt update
+			apt install zabbix-agent
+	elif test $VERSAO = "20" 2>/dev/null
+		then
+			wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+focal_all.deb
+			dpkg -i zabbix-release_4.0-3+focal_all.deb
 			apt update
 			apt install zabbix-agent
 		else 
-			echo "VERSAO NAO SUPORTADA. [18/16/14]?"
+			echo "VERSAO NAO SUPORTADA. [20/18/16/14]?"
 	fi
 
 	Config
@@ -151,20 +165,26 @@ function UbuntuOffline(){
 
 	if test	$VERSAO = "18" 2>/dev/null
 		then
-			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-2+bionic_all.deb
-			dpkg -i zabbix-release_4.0-2+bionic_all.deb
+			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-3+bionic_all.deb
+			dpkg -i zabbix-release_4.0-3+bionic_all.deb
 			apt update
 			apt install zabbix-agent
 	elif test $VERSAO = "16" 2>/dev/null
 		then
-			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-2+xenial_all.deb
-			dpkg -i zabbix-release_4.0-2+xenial_all.deb
+			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-3+xenial_all.deb
+			dpkg -i zabbix-release_4.0-3+xenial_all.deb
 			apt update
 			apt install zabbix-agent
 	elif test $VERSAO = "14" 2>/dev/null
 		then
-			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-2+trusty_all.deb
-			dpkg -i zabbix-release_4.0-2+trusty_all.deb
+			wget http://$PROXY_IP/repozbx/zabbix-release_4.0-3+trusty_all.deb
+			dpkg -i zabbix-release_4.0-3+trusty_all.deb
+			apt update
+			apt install zabbix-agent
+	elif test $VERSAO = "20" 2>/dev/null
+		then
+			wget https://$PROXY_IP/repozbx/zabbix-release_4.0-3+focal_all.deb
+			dpkg -i zabbix-release_4.0-3+focal_all.deb
 			apt update
 			apt install zabbix-agent
 		else 
@@ -216,62 +236,73 @@ function updateOnline(){
 	then
 		if test	$VERSAO = "9" 2>/dev/null
 		then
-			wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-2+stretch_all.deb
-			dpkg -i zabbix-release_4.0-2+stretch_all.deb
+			wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-3+stretch_all.deb
+			dpkg -i zabbix-release_4.0-3+stretch_all.deb
 			apt update
 			apt upgrade zabbix-agent -y
 	elif test $VERSAO = "8" 2>/dev/null
 		then
-			wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-2+jessie_all.deb
-			dpkg -i zabbix-release_4.0-2+jessie_all.deb
+			wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-3+jessie_all.deb
+			dpkg -i zabbix-release_4.0-3+jessie_all.deb
 			apt update
 			apt upgrade zabbix-agent -y
-	elif test $VERSAO = "7" 2>/dev/null
+	elif test $VERSAO = "10" 2>/dev/null
 		then
-			wget https://repo.zabbix.com/zabbix/3.4/debian/pool/main/z/zabbix-release/zabbix-release_3.4-1+wheezy_all.deb
-			dpkg -i zabbix-release_3.4-1+wheezy_all.deb
+			wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-3+buster_all.deb
+			dpkg -i zabbix-release_4.0-3+buster_all.deb
 			apt update
 			apt upgrade zabbix-agent -y
 	else
-		echo "VERSAO NAO SUPORTADA. [9/8/7]?"
+		echo "VERSAO NAO SUPORTADA. [10/9/8]?"
 		fi
 	elif test $DISTRO = ubuntu 2>/dev/null
 		then
 			if test	$VERSAO = "18" 2>/dev/null
 			then
-				wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+bionic_all.deb
-				dpkg -i zabbix-release_4.0-2+bionic_all.deb
+				wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+bionic_all.deb
+				dpkg -i zabbix-release_4.0-3+bionic_all.deb
 				apt update
 				apt upgrade zabbix-agent -y
 		elif test $VERSAO = "16" 2>/dev/null
 			then
-				wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+xenial_all.deb
-				dpkg -i zabbix-release_4.0-2+xenial_all.deb
+				wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+xenial_all.deb
+				dpkg -i zabbix-release_4.0-3+xenial_all.deb
 				apt update
 				apt upgrade zabbix-agent -y
 		elif test $VERSAO = "14" 2>/dev/null
 			then
-				wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-2+trusty_all.deb
-				dpkg -i zabbix-release_4.0-2+trusty_all.deb
+				wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+trusty_all.deb
+				dpkg -i zabbix-release_4.0-3+trusty_all.deb
 				apt update
 				apt upgrade zabbix-agent -y
+		elif test $VERSAO = "20" 2>/dev/null
+			then
+				wget https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+focal_all.deb
+				dpkg -i zabbix-release_4.0-3+focal_all.deb
+				apt update
+				apt upgrade zabbix-agent
 		else 
-			echo "VERSAO NAO SUPORTADA. [18/16/14]?"
+			echo "VERSAO NAO SUPORTADA. [20/18/16/14]?"
 		fi
 	elif test  $DISTRO = rhel 2>/dev/null
 		then
 			if test $VERSAO = "7" 2>/dev/null
 			then
-				rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
+				rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm
 				yum update
 				yum -y upgrade zabbix-agent
 		elif test $VERSAO= "6" 2>/dev/null
 			then
-				rpm -i https://repo.zabbix.com/zabbix/3.4/rhel/6/x86_64/zabbix-release-4.0-2.el6.noarch.rpm 
+				rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/6/x86_64/zabbix-release-4.0-2.el6.noarch.rpm
 				yum update
 				yum -y upgrade zabbix-agent
-			else
-				echo "VERSAO NAO SUPORTADA. [7/6]?"
+		elif test $VERSAO= "8" 2>/dev/null
+			then
+				rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/8/x86_64/zabbix-release-4.0-2.el8.noarch.rpm
+				yum install zabbix-agent
+				yum -y upgrade zabbix-agent
+		else
+			echo "VERSAO NAO SUPORTADA. [8/7/6]?"
 		fi
 	else
 		echo "DISTRO NAO SUPORTADA. [Debian/Ubuntu/RHEL]?"
