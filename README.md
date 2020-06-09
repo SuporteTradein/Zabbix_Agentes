@@ -16,8 +16,8 @@ Execute o script de instalação informando a função, distro, versão e  IP d
 bash Zabbix_Agentes/zbx_agnt_linux.sh install rhel 7 192.168.0.100
 ```
 
-Obs. No caso de CentOs, Red Hat ou Oracle Linux use rhel
-Obs. informar nome da distro totalmente em minúsculo.
+- Obs. No caso de CentOs, Red Hat ou Oracle Linux use rhel
+- Obs. informar nome da distro totalmente em minúsculo.
 
         Abaixo distros e versões suportadas
 | SO Distro	| SO Version |
