@@ -92,11 +92,11 @@ function RHELOnline(){
 		then
 			rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm
 			yum install zabbix-agent
-	elif test $VERSAO= "6" 2>/dev/null
+	elif test $VERSAO = "6" 2>/dev/null
 		then
-			rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/6/x86_64/zabbix-release-4.0-2.el6.noarch.rpm 
+			rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/6/x86_64/zabbix-release-4.0-2.el6.noarch.rpm
 			yum install zabbix-agent
-	elif test $VERSAO= "8" 2>/dev/null
+	elif test $VERSAO = "8" 2>/dev/null
 		then
 			rpm -i https://repo.zabbix.com/zabbix/4.0/rhel/8/x86_64/zabbix-release-4.0-2.el8.noarch.rpm
 			yum install zabbix-agent
@@ -113,11 +113,11 @@ function RHELOffline(){
 		then
 			rpm -i http://$PROXY_IP/repozbx/zabbix-release-4.0-2.el7.noarch.rpm
 			yum install zabbix-agent
-	elif test $VERSAO= "6" 2>/dev/null
+	elif test $VERSAO = "6" 2>/dev/null
 		then
 			rpm -i http://$PROXY_IP/repozbx/zabbix-release-4.0-2.el6.noarch.rpm 
 			yum install zabbix-agent
-	elif test $VERSAO= "8" 2>/dev/null
+	elif test $VERSAO = "8" 2>/dev/null
 		then
 			rpm -i https://$PROXY_IP/repozbx/zabbix-release-4.0-2.el8.noarch.rpm
 			yum install zabbix-agent
