@@ -22,11 +22,9 @@ bash Zabbix_Agentes/zbx_agnt_linux.sh install rhel 7 192.168.0.100
         Abaixo distros e versões suportadas
 | SO Distro	| SO Version |
 |-----------|------------|
-| Debian	| 9 - 8 - 7  |
-| Ubuntu	| 20 - 18 - 16 - 14|
-| CentOs	| 7 - 6      |
-| RedHatEL  | 7 - 6      |
-| Oracle Linux | 7 - 6   |
+| Debian	| 12 - 11 - 10 - 9 |
+| Ubuntu	| 22 - 20 - 18 - 16 - 14|
+| CentOs/RedHatEL/OracleL/RockyL	| 9 - 8 - 7 - 6      |
 
 Para confirmar a instalação execute o comando e veja se o agente está em execução.
 ```
